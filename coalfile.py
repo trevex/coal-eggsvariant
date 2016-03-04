@@ -6,6 +6,8 @@ class EggsvariantFile(CoalFile):
     url = "https://github.com/eggs-cpp/variant"
     exports = ["include"]
     def prepare(self):
-        git_clone(self.url, 'master')
+        git_clone(self.url, 'master', 'src')
+    def package(self):
+        cp('src/include', 'include')
     def info(self, generator):
         generator.add_include_dir('include/')
